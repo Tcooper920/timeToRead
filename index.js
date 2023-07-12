@@ -16,14 +16,17 @@ function calculateWordCount(textContent) {
     } else {
         totalWords = textContent.length;
     }
-    wordCountContainer.innerHTML = `Word count: <strong>${totalWords}</strong>`
 }
 
 function calculateTimeToRead() {
     let timeToReadInMinutes = (totalWords / 238); // 238 avg words read per minute
     let minutes = Number(timeToReadInMinutes.toString().split(".")[0]); // Before decimal
     let seconds = Number((("." + timeToReadInMinutes.toString().split(".")[1]) * 60).toFixed(1)); // After decimal
-    
+    printInfoToPage(totalWords, timeToReadInMinutes, minutes, seconds)
+}
+
+function printInfoToPage(totalWords, timeToReadInMinutes, minutes, seconds) {
+    wordCountContainer.innerHTML = `Word count: <strong>${totalWords}</strong>`
     if (isNaN(seconds)) {
         seconds = 0;
     }
